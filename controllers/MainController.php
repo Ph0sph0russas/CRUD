@@ -1,0 +1,22 @@
+<?php
+require_once "TwigBaseController.php"; // импортим TwigBaseController
+
+class MainController extends TwigBaseController {
+    public $template = "main.twig";
+    public $title = "Главная";
+    public function getContext() : array
+    {
+        $context = parent::getContext(); 
+        $context['menu_items']=[
+            [
+                "title" =>"Изумруды Хаоса",
+                "url_title" => "chaos_emeralds",
+            ],
+            [
+                "title" =>"Магический Ковёр",
+                "url_title" => "magic_carpet",
+            ],
+        ];
+        return $context;
+    }
+}

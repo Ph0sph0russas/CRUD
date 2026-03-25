@@ -1,0 +1,9 @@
+{% macro btn(text, url, booleanVal, warningText) %}
+{% if booleanVal == true and warningText == "warning" %}
+ <a href={{url}} class="btn btn-warning">{{text}}</a>
+{% elseif booleanVal == false and warningText =="warning" %}
+ <a href={{url}} class="btn btn-link">{{text}}</a>
+{% elseif warningText is null and booleanVal == true %}
+ <a href={{url}} class="btn btn-primary">{{text}}</a>
+{% endif %}
+{% endmacro %}
