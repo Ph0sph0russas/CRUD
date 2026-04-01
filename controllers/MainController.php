@@ -11,7 +11,7 @@ class MainController extends BaseGearsTwigController {
         
         if (isset($_GET['type']))
             {
-                $query = $this->pdo->prepare    ("SELECT * FROM extreme_gears WHERE type = :type");
+                $query = $this->pdo->prepare("SELECT * FROM extreme_gears WHERE type = :type");
                 $query->bindValue("type",$_GET['type']);
                 $query->execute();
             }
