@@ -5,7 +5,6 @@ class ExtremeGearCreateController extends BaseGearsTwigController {
     public $template = "extreme_gear_create.twig";
     public function get(array $context)
     {
-        echo $_SERVER['REQUEST_METHOD'];
         parent::get($context);
     }
     public function post(array $context)
@@ -13,14 +12,24 @@ class ExtremeGearCreateController extends BaseGearsTwigController {
         
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $type = $_POST['type'];
+        
+        $type_name = $_POST['type'];
+        $sql_type_number= <<<EOL
+SELECT id from object_types 
+where name=:type
+EOL;
+        $query_type_number=$this->pdo->prepare($sql_type_number);
+        $query_type_number->bindValue("type", $type_name);
+        $query_type_number->execute();
+        $type=$query_type_number->fetchColumn();
+
         $info = $_POST['info'];
         $tmp_name = $_FILES['image']['tmp_name'];
         $name =  $_FILES['image']['name'];
         move_uploaded_file($tmp_name, "../public/media/$name");
         $image_url = "/media/$name";
         $sql = <<<EOL
-INSERT INTO extreme_gears(title, description, type, info, image)
+INSERT INTO extreme_gears(title, description, type_id, info, gear_image)
 VALUES(:title, :description, :type, :info, :image_url)
 EOL;
 

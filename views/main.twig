@@ -6,7 +6,7 @@
     {% for object in extreme_gears %} 
     <li class="list-group-item text-center" style = "border-left: 1px solid rgba(0,0,0,.125);">
         
-            <img src ="{{object.image}}" style = "width:80%; height:150px;">
+            <img src ="{{object.gear_image}}" style = "width:80%; height:150px;">
             <a href="/extreme_gears/{{object.id}}" class="btn btn-primary w-100" style="margin-top: 1em">{{object.title}}</a>
             <div class="d-flex justify-content-center">
                 <a href="/extreme_gears/{{object.id}}?show=image" class="p-2">Картинка</a>

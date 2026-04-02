@@ -11,10 +11,11 @@ class SearchController extends BaseGearsTwigController{
         $title=isset($_GET['title']) ? $_GET['title'] : '';
         $full_description=isset($_GET['full_description']) ? $_GET['full_description'] : '';
         $sql = <<<EOL
-SELECT id, title
+SELECT extreme_gears.id, title
 FROM extreme_gears
+join object_types on type_id=object_types.id
 WHERE (:title = '' OR title like CONCAT('%', :title, '%'))
-    and ((type = :type) OR :type='все')
+    and ((name = :type) OR :type='все')
     and (:full_description='' OR info like CONCAT('%', :full_description, '%'))
 EOL;
     $query=$this->pdo->prepare($sql);

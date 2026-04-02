@@ -6,7 +6,7 @@ class ObjectController extends BaseGearsTwigController {
     public function getContext(): array
     {
         $context = parent::getContext();
-        $query = $this->pdo->prepare("SELECT description, id, image, info FROM extreme_gears WHERE id = :id");
+        $query = $this->pdo->prepare("SELECT description, id, gear_image, info FROM extreme_gears WHERE id = :id");
         $query->bindValue("id",$this->params['id']);
         $query->execute();
         $data = $query->fetch();
@@ -14,7 +14,7 @@ class ObjectController extends BaseGearsTwigController {
             {
                 if ($_GET['show']==='image')
                     {
-                        $context['image']=$data['image'];
+                        $context['image']=$data['gear_image'];
                         $context['is_image']=1;
                     }
                 else if ($_GET['show']==='info')
