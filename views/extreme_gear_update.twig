@@ -22,7 +22,7 @@
             <label class="form-label">Тип</label>
             <select class="form-control" name="type">
             {% for type in types %}
-            <option value="{{ type.name }}" {% if type.name == object.name %} selected {% endif %}>
+            <option value="{{ type.name }}" {% if type.name == object.name %}selected{% endif %}>
                 {{ type.name|title }}
             </option>  
             {% endfor %}

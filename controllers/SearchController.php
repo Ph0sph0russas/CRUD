@@ -25,6 +25,9 @@ EOL;
         $query->execute();
         
         $context['objects']=$query->fetchAll();
+        $context['selected_type']=$_GET['type'];
+        $context['full_description']=$_GET['full_description'];
+        $context['title']=$_GET['title'];
         return $context;
     }
 }

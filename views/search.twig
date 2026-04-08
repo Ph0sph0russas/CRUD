@@ -7,10 +7,10 @@
         Тип
         <br>
         
-        <select class="form-select" name="type">
-            <option value="все" {% if type =='все' %}selected{% endif %}>Все</option>
+        <select class="form-control" name="type">
+            <option value="все">Все</option>
             {% for type in types %}
-            <option value="{{ type.name }}" {% if type == type.name %}selected{% endif %}>{{ type.name|title }}</option>  
+            <option value="{{ type.name }}" {% if selected_type == type.name %}selected{% endif %}>{{ type.name|title }}</option>  
             {% endfor %}
             
         </select>
@@ -18,12 +18,12 @@
         <div class="col-sm-3">
         Название
         <br>
-            <input type="text" class="form-control" name="title" value="{{ selected_title }}">
+            <input type="text" class="form-control" name="title" value="{{ title }}">
         </div>
         <div class="col-sm-3">
         Описание
         <br>
-            <input type="text" class="form-control" name="full_description">
+            <input type="text" class="form-control" name="full_description" value="{{ full_description }}">
         </div>
         <div class="col">
         <br>
