@@ -11,13 +11,13 @@ class MainController extends BaseGearsTwigController {
         
         if (isset($_GET['type']))
         {
-                $query = $this->pdo->prepare("SELECT * FROM extreme_gears JOIN object_types on type_id=object_types.id WHERE name = :type");
-                $query->bindValue("type",$_GET['type']);
-                $query->execute();
+            $query = $this->pdo->prepare("SELECT extreme_gears.id, title, gear_image, description, info FROM extreme_gears JOIN object_types on type_id=object_types.id WHERE name = :type");
+            $query->bindValue("type",$_GET['type']);
+            $query->execute();
         }
         else
         {
-                $query = $this->pdo->query("SELECT * FROM extreme_gears");
+            $query = $this->pdo->query("SELECT * FROM extreme_gears");
         }
         $context['extreme_gears'] = $query->fetchAll();
         return $context;
