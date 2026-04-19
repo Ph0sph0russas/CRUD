@@ -16,7 +16,8 @@ class TwigBaseController extends BaseController {
         $context['title'] = $this->title;
 
 
-        $url_from_server=$_SERVER["REQUEST_URI"];
+        $url_from_server=urldecode($_SERVER["REQUEST_URI"]);
+        
         if (!isset($_SESSION['urls'])){
             $_SESSION['urls']=[];
         }

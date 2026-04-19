@@ -48,10 +48,10 @@
     {% endblock %}
 
 </div>
-<div style="padding-right: 2%; padding-top: 1%;">Последние страницы, которые вы посетили: <br>
+<div style="padding-right: 2%; padding-top: 1%; max-width: 300px;">Последние страницы, которые вы посетили: <br>
   {% for n in urls %}
   {% set firstColor = 150 + loop.index*10 %}
-  <div class="container-fluid p-2 rounded" style="background-color: rgb({{ firstColor }}, 160, 236); margin-top:1%;">
+  <div class="p-2 rounded text-break" style="background-color: rgb({{ firstColor }}, 160, 236); margin-top:1%;">
    <a href="{{n}}" style="color:black;">{{n}}</a><br>
    </div>
   {% endfor %}
