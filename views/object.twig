@@ -1,5 +1,11 @@
 {% extends "__layout.twig" %}
 {% block content %}
+Session message: {{my_session_message}}
+<br>
+Last message: <br>
+{% for m in messages %}
+   {{m}}<br>
+{% endfor %}
 {{description}}
 <ul class="nav nav-pills p-2">
   <li class="nav-item">

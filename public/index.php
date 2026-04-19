@@ -10,6 +10,7 @@
     require_once "../controllers/ExtremeGearDeleteController.php";
     require_once "../controllers/ExtremeGearUpdateController.php";
     require_once "../middlewares/LoginRequiredMiddleware.php";
+    require_once "../controllers/SetWelcomeController.php";
     $loader = new \Twig\Loader\FilesystemLoader('../views');
     $twig = new \Twig\Environment($loader,[
         "debug"=>true
@@ -34,4 +35,8 @@
             ->middleware(new LoginRequiredMiddleware());
     $router->add("/extreme_gears/(?P<id>\d+)/edit", ExtremeGearUpdateController::class)
             ->middleware(new LoginRequiredMiddleware());
+    $router->add("/set-welcome/", SetWelcomeController::class);
     $router->get_or_default(Controller404::class);
+
+
+    
